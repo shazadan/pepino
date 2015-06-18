@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Computer Circuitry in Pure CSS</title>
+	<meta name="viewport" content="width=device-width" />
+	<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic" rel="stylesheet" type="text/css" />
+	<link href="styles/layout.css" rel="stylesheet" />
+	<link href="styles/gate-theme.css" rel="stylesheet" />
+	<link href="styles/basic-gates.css" rel="stylesheet" />
+	<link href="styles/chained-adder.css" rel="stylesheet" />
+	<link href="styles/decimal-adder.css" rel="stylesheet" />
+</head>
+<body>
+	<nav>
+		<a href="#">HOME</a>
+		<a href="#nand" id="nand" tabindex="1">NAND</a>
+		<section>
+			<div class="ShrinkWrap">
+				<p>
+					Below is a NAND gate, it outputs false when both inputs are true, rendered using Silon. All other gates can be derived using the NAND gate. Click the inputs (square boxes) to see the output reflect the values.
+				</p>
+		
+				<ul class="CanvasList">
+					<li>
+						<h2>NAND Gate</h2>
+						<div class="Canvas" style="width: 9rem; height: 17rem;">
+							<input type="checkbox" id="simple-nand-a" style="top: 0; left: 0;" />
+							<label for="simple-nand-a" style="top: 0; left: 0;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 1.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 5rem; left: 1.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 5rem; left: 3.5rem; height: 2rem;"></div>
+							</div>
+
+							<input type="checkbox" id="simple-nand-b" style="top: 0; left: 6rem;" />
+							<label for="simple-nand-b" style="top: 0; left: 6rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 7.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 5rem; left: 5.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 5rem; left: 5.5rem; height: 2rem;"></div>
+							</div>
+
+							<div id="simple-nand-gate" class="Gate NAND" style="left: 2.5rem; top: 7rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 12rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 14rem;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<a href="#standard_gates" id="standard_gates" tabindex="2">Standard Gates</a>
+		<section>
+			<div class="ShrinkWrap">
+				<p>
+					Below is a NOT gate built using the primitive NAND gate. Click the input (square box) to see the output reflect the values.
+				</p>
+		
+				<ul class="CanvasList">
+					<li>
+						<h2>Not Gate</h2>
+						<div class="Canvas" style="width: 9rem; height: 17rem;">
+							<input type="checkbox" id="nand-not-a" style="top: 0; left: 0;" />
+							<label for="nand-not-a" style="top: 0; left: 3rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 5rem; left: 3.5rem; width: 1rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 5rem; left: 3.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 5rem; left: 4.5rem; width: 1rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 5rem; left: 5.5rem; height: 2rem;"></div>
+							</div>
+							<div id="simple-nand-gate" class="Gate NAND" style="left: 2.5rem; top: 7rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 12rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 14rem;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="DefaultTab">
+			<div class="ShrinkWrap">
+				<h2>Building a Modern Computer's Circuitry Using First Principles and CSS</h2>
+				<p>by <a href="https://twitter.com/shazadanawaz" target="_blank">Shazada Nawaz</a></p>
+				<br>
+				<p>To get started, click the 'NAND' tab above.</p>
+				<p>To learn more about Silon, the CSS framework used here, click <a href="https://github.com/SLaks/Silon#readme">here</a>.</p>
+			</div>
+		</section>
+	</nav>
+</body>
+</html>
