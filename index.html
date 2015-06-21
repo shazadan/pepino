@@ -58,12 +58,12 @@
 		<section>
 			<div class="ShrinkWrap">
 				<p>
-					Below is a NOT gate built using the primitive NAND gate. Click the input (square box) to see the output reflect the values.
+					Below is a NOT gate built using the primitive NAND gate (left). A symbolic NOT gate (right) is also shown that yields the same result. Click the input (square box) to see the output reflect the values. Going forward symbolic gates will be used to build more complex gates and circuits.
 				</p>
 		
 				<ul class="CanvasList">
 					<li>
-						<h2>Not Gate</h2>
+						<h2>NOT Gate</h2>
 						<div class="Canvas" style="width: 9rem; height: 17rem;">
 							<input type="checkbox" id="nand-not-a" style="top: 0; left: 0;" />
 							<label for="nand-not-a" style="top: 0; left: 3rem;"></label>
@@ -82,6 +82,189 @@
 							<div class="Group">
 								<div class="Connector Vertical" style="top: 12rem; left: 4.5rem; height: 2rem;"></div>
 								<div class="Result" style="left: 3rem; top: 14rem;"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h2>NOT (Symbolic)</h2>
+						<div class="Canvas" style="width: 9rem; height: 15rem;">
+							<input type="checkbox" id="simple-not-a" style="top: 0; left: 0;" />
+							<label for="simple-not-a" style="top: 0; left: 3rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 4.5rem; height: 2rem;"></div>
+								
+							</div>
+							<div id="simple-not-gate" class="Gate NOT" style="left: 2.5rem; top: 5rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 10rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 12rem;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p>
+					Here is an AND gate using a NOT and NAND. Click the inputs (square boxes) to see the output reflect the values.
+				</p>
+				<ul class="CanvasList">
+					<li>
+						<h2>AND Gate</h2>
+						<div class="Canvas" style="width: 9rem; height: 24rem;">
+							
+							<input type="checkbox" id="nand-based-and-a" style="top: 0; left: 0;" />
+							<label for="nand-based-and-a" style="top: 0; left: 0;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 1.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 5rem; left: 1.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 5rem; left: 3.5rem; height: 2rem;"></div>
+							</div>
+							<input type="checkbox" id="nand-based-and-b" style="top: 0; left: 6rem;" />
+							<label for="nand-based-and-b" style="top: 0; left: 6rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 7.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 5rem; left: 5.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 5rem; left: 5.5rem; height: 2rem;"></div>
+							</div>
+							<div id="nand-based-and-not-gate-input" class="Gate NAND" style="left: 2.5rem; top: 7rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 12rem; left: 4.5rem; height: 2rem;"></div>
+								
+							</div>
+							<div id="nand-based-and-gate-out" class="Gate NOT" style="left: 2.5rem; top: 14rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 19rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 21rem;"></div>
+							</div>
+
+						</div>
+					</li>
+					<li>
+						<h2>AND (Symbolic)</h2>
+						<div class="Canvas" style="width: 9rem; height: 17rem;">
+							<input type="checkbox" id="simple-and-a" style="top: 0; left: 0;" />
+							<label for="simple-and-a" style="top: 0; left: 0;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 1.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 5rem; left: 1.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 5rem; left: 3.5rem; height: 2rem;"></div>
+							</div>
+
+							<input type="checkbox" id="simple-and-b" style="top: 0; left: 6rem;" />
+							<label for="simple-and-b" style="top: 0; left: 6rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 7.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 5rem; left: 5.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 5rem; left: 5.5rem; height: 2rem;"></div>
+							</div>
+
+							<div id="simple-and-gate" class="Gate AND" style="left: 2.5rem; top: 7rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 12rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 14rem;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p>
+					Here is an OR gate. Click the inputs (square boxes) to see the output reflect the values.
+				</p>
+				<ul class="CanvasList">
+					<li>
+						<h2>OR Gate</h2>
+						<div class="Canvas" style="width: 12rem; height: 24rem;">
+							
+							<input type="checkbox" id="nand-based-or-a" style="top: 0; left: 0;" />
+							<label for="nand-based-or-a" style="top: 0; left: 1rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 2.5rem; height: 2rem;"></div>
+								
+							</div>
+							<div id="nand-based-or-input1" class="Gate NOT" style="left: 0.5rem; top: 5rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 10rem; left: 2.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 12rem; left: 2.5rem; width: 2.5rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 12rem; left: 5rem; height: 2rem;"></div>
+							</div>
+
+							<input type="checkbox" id="nand-based-or-b" style="top: 0; left: 6;" />
+							<label for="nand-based-or-b" style="top: 0; left: 8rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 9.5rem; height: 2rem;"></div>
+								
+							</div>
+							<div id="nand-based-or-input2" class="Gate NOT" style="left: 7.5rem; top: 5rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 10rem; left: 9.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 12rem; left: 7rem; width: 2.5rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 12rem; left: 7rem; height: 2rem;"></div>
+							</div>
+
+							<div id="nand-based-or-gate-out" class="Gate NAND" style="left: 4rem; top: 14rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 19rem; left: 6rem; height: 2rem;"></div>
+								<div class="Result" style="left: 4.5rem; top: 21rem;"></div>
+							</div>
+
+						</div>
+					</li>
+					<li>
+						<h2>OR (Symbolic)</h2>
+						<div class="Canvas" style="width: 9rem; height: 16rem;">
+							<input type="checkbox" id="simple-or-a" style="top: 0rem; left: 0;" />
+							<label for="simple-or-a" style="top: 0rem; left: 0;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 1.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Left Up" style="top: 5rem; left: 1.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Left" style="top: 5rem; left: 3.5rem; height: 2rem;"></div>
+								<div class="Connector Vertical Convex Left" style="top: 7rem; left: 3.5rem;"></div>
+							</div>
+
+							<input type="checkbox" id="simple-or-b" style="top: 0rem; left: 6rem;" />
+							<label for="simple-or-b" style="top: 0rem; left: 6rem;"></label>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 3rem; left: 7.5rem; height: 2rem;"></div>
+								<div class="Connector Horizontal Corner Right Up" style="top: 5rem; left: 5.5rem; width: 2rem;"></div>
+								<div class="Connector Vertical Corner Right" style="top: 5rem; left: 5.5rem; height: 2rem;"></div>
+								<div class="Connector Vertical Convex Right" style="top: 7rem; left: 5.5rem;"></div>
+							</div>
+
+							<div id="simple-or-gate" class="Gate OR" style="left: 2.5rem; top: 7rem;">
+								<span></span>
+								<span></span>
+								<div></div>
+							</div>
+							<div class="Group">
+								<div class="Connector Vertical" style="top: 11rem; left: 4.5rem; height: 2rem;"></div>
+								<div class="Result" style="left: 3rem; top: 13rem;"></div>
 							</div>
 						</div>
 					</li>

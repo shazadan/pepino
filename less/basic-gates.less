@@ -6,13 +6,12 @@
 .coloredOp(simple-and-a, and, simple-and-b, simple-and-gate);
 .coloredOp(simple-or-a, or, simple-or-b, simple-or-gate);
 .coloredOp(simple-nand-a, nand, simple-nand-b, simple-nand-gate);
-.coloredOp(simple-not-a, not, simple-not-a, simple-not-gate);
+.coloredUnaryOp(not, simple-not-a, simple-not-gate);
 
 //NAND Derived Gates
 .coloredOp(nand-not-a, nand, nand-not-a, simple-nand-gate);
-
-.coloredOp(nand-and-a, nand, nand-and-b, nand-and-gate);
-.coloredOp(nand-and-not-a, nand, nand-and-not-a, nand-and-not-gate);
+.nandBasedAnd(root, nand-based-and);
+.nandBasedOr(root, nand-based-or);
 
 // Half Adder
 .coloredOp(half-adder-a, xor, half-adder-b, half-adder-xor-gate);

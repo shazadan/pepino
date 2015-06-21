@@ -14,15 +14,12 @@
 // reference) from gate-theme.less to use this file.
 
 // This is called for the outermost layer.
-.coloredOp(@first, @operation, @second, @output, @result: hasResult) when (@operation = not), (@operation = nand), (@operation = and), (@operation = xor), (@operation = or) {
+.coloredOp(@first, @operation, @second, @output, @result: hasResult) when (@operation = nand), (@operation = and), (@operation = xor), (@operation = or) {
 	@combinatedOutput: %(~'~ #%s', replace(@output, '^#', ''));
 	#private.callProbe(@first);
 	#private.callProbe(@second);
 	.op(@first, @operation, @second, {
 		@{combinatedOutput}:extend(.Connectors.Active all) { }
-
-		@{combinatedOutput}:extend(.ActiveGate.NOT all) when (@operation = not) {}
-		
 		@{combinatedOutput}:extend(.ActiveGate.NAND all) when (@operation = nand) {}
 		@{combinatedOutput}:extend(.ActiveGate.OR all) when (@operation = or) {}
 		@{combinatedOutput}:extend(.ActiveGate.AND all) when (@operation = and) {}
@@ -30,6 +27,17 @@
 		@{combinatedOutput}:extend(.ActiveGate.Result all) when (@result = hasResult) { }
 	});
 }
+
+.coloredUnaryOp(@operation, @operand, @output, @result: hasResult) when (@operation = not) {
+	@combinatedOutput: %(~'~ #%s', replace(@output, '^#', ''));
+	#private.callProbe(@operand);
+	.unaryOp(@operation, @operand, {
+		@{combinatedOutput}:extend(.Connectors.Active all) { }
+		@{combinatedOutput}:extend(.ActiveGate.NOT all) when (@operation = not) {}
+		@{combinatedOutput}:extend(.ActiveGate.Result all) when (@result = hasResult) { }
+	});
+}
+
 
 // This is called for chained selectors.
 // The first overload will be invoked by
@@ -47,6 +55,17 @@
 }
 .coloredOp(@mode, @first, @operation, @second, @output) when (length(@mode) > 1) {
 	.op(@mode, @first, @operation, @second);
+}
+
+
+.coloredUnaryOp(probe, @operation, @operand, @output) when not (@output = none) {
+	.coloredUnaryOp(@operation, @operand, @output, noResult);
+}
+.coloredUnaryOp(root, @operation, @operand, @output) {
+	.coloredUnaryOp(@operation, @operand, @output, hasResult);
+}
+.coloredUnaryOp(@mode, @operation, @operand, @output) when (length(@mode) > 1) {
+	.unaryOp(@mode, @operation, @operand);
 }
 
 #private {
@@ -80,10 +99,32 @@
 .fullAdder(@mode, @prefix, @carryIn) when (@mode = root), (@mode = probe) {
 	@prefixFormat: %(~'#%s-%%s', @prefix);
 	.coloredOp(
-		// When passing a nested selector as the carryIn, don't probe it a second time.
+		// When passing a nested selector as the carryIn, dont probe it a second time.
 		{ .c(@c) when not (@c = probe) { .callSelector(@carryIn, @c); } },
 		xor,
 		{ .c(@c) { .coloredOp(@c, %(@prefixFormat, a), xor, %(@prefixFormat, b), none); } },
 		%(@prefixFormat, xor-gate-carry)
+	);
+}
+
+
+// NAND Based AND
+.nandBasedAnd(@c, @prefix) {
+	@prefixFormat: %(~'#%s-%%s', @prefix);
+	.coloredUnaryOp(
+		not,
+		{ .c(@c) { .coloredOp(@c, %(@prefixFormat, a), nand, %(@prefixFormat, b), %(@prefixFormat, not-gate-input)) } },
+		%(@prefixFormat, gate-out)
+	);
+}
+
+// NAND Based OR
+.nandBasedOr(@c, @prefix) {
+	@prefixFormat: %(~'#%s-%%s', @prefix);
+	.coloredOp(@c,
+		{ .c(@c) { .coloredUnaryOp(@c, not, %(@prefixFormat, a), %(@prefixFormat, input1)) } },
+		nand,
+		{ .c(@c) { .coloredUnaryOp(@c, not, %(@prefixFormat, b), %(@prefixFormat, input2)) } },
+		%(@prefixFormat, gate-out)
 	);
 }

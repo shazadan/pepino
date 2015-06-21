@@ -23,6 +23,14 @@
 	.op(@first, @operation, @second, extract(@c, 1), extract(@c, 2));
 }
 
+.unaryOp(@operation, @operand, @content) when (@operation = not) {
+	.unaryOp(normal @content, @operation, @operand);   // Pass @content via scope
+}
+
+.unaryOp(@c, @operation, @operand) when (length(@c) > 1) {
+	.unaryOp(@operation, @operand, extract(@c, 1), extract(@c, 2));
+}
+
 @tilde: ~'~ ';
 // These overloads are called in detached rulesets when chaining
 .op(@first, xor, @second, normal, @content) {
@@ -71,9 +79,13 @@
 	.callSelector(@second, invert, @content);
 }
 
-.op(@first, not, normal, @content) {
-	.callSelector(@first, invert, @content);
+.unaryOp(not, @operand, normal, @content) {
+	.callSelector(@operand, invert, @content);
 }
+.unaryOp(not, @operand, invert, @content) {
+	.callSelector(@operand, normal, @content);
+}
+
 
 
 // Calls a selector (as a string or a nested ruleset),
